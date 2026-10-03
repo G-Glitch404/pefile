@@ -123,7 +123,6 @@ OPTIONAL_HEADER_MAGIC_PE_PLUS = 0x20B
 def two_way_dict(pairs):
     return dict([(e[1], e[0]) for e in pairs] + pairs)
 
-
 directory_entry_types = [
     ("IMAGE_DIRECTORY_ENTRY_EXPORT", 0),
     ("IMAGE_DIRECTORY_ENTRY_IMPORT", 1),
@@ -132,7 +131,7 @@ directory_entry_types = [
     ("IMAGE_DIRECTORY_ENTRY_SECURITY", 4),
     ("IMAGE_DIRECTORY_ENTRY_BASERELOC", 5),
     ("IMAGE_DIRECTORY_ENTRY_DEBUG", 6),
-    ("IMAGE_DIRECTORY_ENTRY_COPYRIGHT", 7),  # Architecture on non-x86 platforms
+    ("IMAGE_DIRECTORY_ENTRY_ARCHITECTURE", 7),  # Architecture Specific Data
     ("IMAGE_DIRECTORY_ENTRY_GLOBALPTR", 8),
     ("IMAGE_DIRECTORY_ENTRY_TLS", 9),
     ("IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG", 10),
@@ -144,8 +143,8 @@ directory_entry_types = [
 ]
 
 DIRECTORY_ENTRY = two_way_dict(directory_entry_types)
-DIRECTORY_ENTRY["IMAGE_DIRECTORY_ENTRY_ARCHITECTURE"] = DIRECTORY_ENTRY[
-    "IMAGE_DIRECTORY_ENTRY_COPYRIGHT"
+DIRECTORY_ENTRY["IMAGE_DIRECTORY_ENTRY_COPYRIGHT"] = DIRECTORY_ENTRY[
+    "IMAGE_DIRECTORY_ENTRY_ARCHITECTURE"
 ]
 
 image_characteristics = [
